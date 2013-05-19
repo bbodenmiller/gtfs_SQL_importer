@@ -57,7 +57,7 @@ drop all the indexes first and then reapply them afterwards:
 
 # Test/Demonstration
 
-The corrected (even google's example data has errors) demo feed from the 
+The corrected (even googles example data has errors) demo feed from the 
 GTFS website is included in this distribution. You should play around with that 
 first to get everything to work and to see how the data gets put into tables.
 
@@ -90,19 +90,25 @@ Note:
 2. Download sqlite3
 3. Install Bash of some sort
 4. In bash:
-    
+
+go to repo
+
     cd \c\path\to\repo\src
-    
-    # save gtfs to sql data to a file
+
+save gtfs to sql data to a file
+
     \c\path\to\python import_gtfs_to_sql.py test nocopy > temp.sqlite
     
-    # create db
+create db
+
     \c\path\to\sqlite3 ANewDatabase.db < gtfs_tables.sqlite
     
-    # write data to db
+write data to db
+
     \c\path\to\sqlite3 ANewDatabase.db < temp.sqlite
 
 #### Linux ####
+
     cat gtfs_tables.sqlite \
       <(python import_gtfs_to_sql.py sample_feed nocopy)  \
     | sqlite3 ANewDatabase.db
