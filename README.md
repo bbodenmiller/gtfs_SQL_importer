@@ -85,6 +85,24 @@ Note:
 
   gtfs_tables.sqlite includes the constraints on creation. 
 
+#### Windows ####
+1. Install python2
+2. Download sqlite3
+3. Install Bash of some sort
+4. In bash:
+    
+    cd \c\path\to\repo\src
+    
+    # save gtfs to sql data to a file
+    \c\path\to\python import_gtfs_to_sql.py test nocopy > temp.sqlite
+    
+    # create db
+    \c\path\to\sqlite3 ANewDatabase.db < gtfs_tables.sqlite
+    
+    # write data to db
+    \c\path\to\sqlite3 ANewDatabase.db < temp.sqlite
+
+#### Linux ####
     cat gtfs_tables.sqlite \
       <(python import_gtfs_to_sql.py sample_feed nocopy)  \
     | sqlite3 ANewDatabase.db
@@ -95,6 +113,6 @@ If you need to makeindices or dropindices as above you'll have to experiment
 with doing it yourself.
 
 ### Modification within SQL Database
-    sqlite3 -init gtfs_tables_dropindexes.sqlite myDatabase.db
+    sqlite3 -init gtfs_tables_dropindexes.sqlite ANewDatabase.db
     # do your stuff
-    sqlite3 -init gtfs_tables_makeindexes.sqlite myDatabase.db
+    sqlite3 -init gtfs_tables_makeindexes.sqlite ANewDatabase.db
